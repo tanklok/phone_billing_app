@@ -61,7 +61,7 @@ void RegisterView::setupUI()
     QLabel *roleLabel = new QLabel("Роль:*", this);
     roleLabel->setFixedWidth(120);
     m_roleComboBox = new QComboBox(this);
-    m_roleComboBox->addItems({"оператор", "менеджер"});
+    m_roleComboBox->addItems({"operator", "manager"});
     roleLayout->addWidget(roleLabel);
     roleLayout->addWidget(m_roleComboBox);
     mainLayout->addLayout(roleLayout);

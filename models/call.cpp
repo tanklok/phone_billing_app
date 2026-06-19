@@ -4,22 +4,22 @@ Call::Call(QObject *parent) : Model(parent) {}
 
 void Call::fromQuery(const QSqlQuery &query)
 {
-    m_id = getValue<qint64>(query, "id_звонка");
-    m_date = getValue<QDate>(query, "дата");
-    m_duration = getValue<int>(query, "длительность");
-    m_timeOfDay = getValue<QString>(query, "время_суток");
-    m_callerId = getValue<qint64>(query, "id_абонента_отправитель");
-    m_receiverId = getValue<qint64>(query, "id_абонента_получатель");
+    m_id = getValue<qint64>(query, "call_id");
+    m_date = getValue<QDate>(query, "call_date");
+    m_duration = getValue<int>(query, "duration_minutes");
+    m_timeOfDay = getValue<QString>(query, "time_of_day");
+    m_callerId = getValue<qint64>(query, "sender_subscriber_id");
+    m_receiverId = getValue<qint64>(query, "receiver_subscriber_id");
 }
 
 QVariantMap Call::toVariantMap() const
 {
     QVariantMap map;
-    map["id_звонка"] = m_id;
-    map["дата"] = m_date;
-    map["длительность"] = m_duration;
-    map["время_суток"] = m_timeOfDay;
-    map["id_абонента_отправитель"] = m_callerId;
-    map["id_абонента_получатель"] = m_receiverId;
+    map["call_id"] = m_id;
+    map["call_date"] = m_date;
+    map["duration_minutes"] = m_duration;
+    map["time_of_day"] = m_timeOfDay;
+    map["sender_subscriber_id"] = m_callerId;
+    map["receiver_subscriber_id"] = m_receiverId;
     return map;
 }

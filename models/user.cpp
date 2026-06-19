@@ -19,18 +19,18 @@ bool User::checkPassword(const QString &password) const
 
 void User::fromQuery(const QSqlQuery &query)
 {
-    m_id = getValue<qint64>(query, "id_пользователя");
-    m_login = getValue<QString>(query, "логин");
-    m_passwordHash = getValue<QString>(query, "пароль");
-    m_fullName = getValue<QString>(query, "ФИО");
+    m_id = getValue<qint64>(query, "user_id");
+    m_login = getValue<QString>(query, "login");
+    m_passwordHash = getValue<QString>(query, "password_hash");
+    m_fullName = getValue<QString>(query, "full_name");
 }
 
 QVariantMap User::toVariantMap() const
 {
     QVariantMap map;
-    map["id_пользователя"] = m_id;
-    map["логин"] = m_login;
-    map["пароль"] = m_passwordHash;
-    map["ФИО"] = m_fullName;
+    map["user_id"] = m_id;
+    map["login"] = m_login;
+    map["password_hash"] = m_passwordHash;
+    map["full_name"] = m_fullName;
     return map;
 }

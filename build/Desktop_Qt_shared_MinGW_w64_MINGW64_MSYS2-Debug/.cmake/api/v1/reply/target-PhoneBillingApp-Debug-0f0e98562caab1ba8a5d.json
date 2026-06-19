@@ -332,11 +332,11 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "PhoneBillingApp_autogen::@6890427a1f51a3e7e1df"
+			"id" : "PhoneBillingApp_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "PhoneBillingApp_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "PhoneBillingApp_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "PhoneBillingApp::@6890427a1f51a3e7e1df",
@@ -351,7 +351,7 @@
 		],
 		"prefix" : 
 		{
-			"path" : "C:/Program Files (x86)/phone_billing_app"
+			"path" : "C:/Program Files (x86)/PhoneBillingApp"
 		}
 	},
 	"link" : 
@@ -445,11 +445,11 @@
 			"id" : "Qt6::uic::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 0,
-			"id" : "PhoneBillingApp_autogen::@6890427a1f51a3e7e1df"
+			"id" : "PhoneBillingApp_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "PhoneBillingApp_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "PhoneBillingApp_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"paths" : 

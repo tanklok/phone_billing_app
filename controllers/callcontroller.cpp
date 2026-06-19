@@ -1,5 +1,6 @@
 #include "callcontroller.h"
 #include "../core/databasemanager.h"
+#include "../core/logger.h"
 
 CallController::CallController(QObject *parent) : BaseController(parent) {}
 
@@ -7,15 +8,16 @@ bool CallController::createCall(const Call &call)
 {
     DatabaseManager &db = DatabaseManager::getInstance();
 
-    QString sql = "INSERT INTO Звонки "
-                  "(дата, длительность, время_суток, "
-                  "id_абонента_отправитель, id_абонента_получатель) "
-                  "VALUES (?, ?, ?, ?, ?)";
+    // Преобразуем 'день'/'ночь' в 'DAY'/'NIGHT'
+    QString timeOfDay = (call.getTimeOfDay() == "день") ? "DAY" : "NIGHT";
+
+    QString sql = "INSERT INTO calls (call_date, duration_minutes, time_of_day, sender_subscriber_id, receiver_subscriber_id) "
+                  "VALUES ($1, $2, $3, $4, $5)";
 
     bool success = db.executeNonQuery(sql, {
         call.getDate(),
         call.getDuration(),
-        call.getTimeOfDay(),
+        timeOfDay,
         call.getCallerId(),
         call.getReceiverId()
     });
@@ -31,7 +33,7 @@ bool CallController::createCall(const Call &call)
 
 bool CallController::deleteCall(qint64 id)
 {
-    QString sql = "DELETE FROM Звонки WHERE id_звонка = ?";
+    QString sql = "DELETE FROM calls WHERE call_id = $1";
     DatabaseManager &db = DatabaseManager::getInstance();
 
     if (db.executeNonQuery(sql, {id})) {
@@ -47,57 +49,18 @@ QList<CallDetail*> CallController::getCallDetails(const QDate &dateFrom,
                                                    const QDate &dateTo,
                                                    qint64 abonentId)
 {
-    QString sql = R"(
-        SELECT
-            з.id_звонка,
-            з.дата,
-            з.длительность,
-            з.время_суток,
-            а1.название AS отправитель,
-            а2.название AS получатель,
-            г1.название_города AS город_отправления,
-            г2.название_города AS город_назначения,
-            т.стоимость_минуты,
-            COALESCE(п.размер_скидки, 0) AS размер_скидки,
-            (з.длительность * т.стоимость_минуты *
-             (100 - COALESCE(п.размер_скидки, 0)) / 100) AS итоговая_стоимость
-        FROM Звонки з
-        JOIN Абоненты а1 ON з.id_абонента_отправитель = а1.id_абонента
-        JOIN Города г1 ON а1.id_города = г1.id_города
-        JOIN Абоненты а2 ON з.id_абонента_получатель = а2.id_абонента
-        JOIN Города г2 ON а2.id_города = г2.id_города
-        JOIN Тарифы т ON г1.id_города = т.id_города_отправления
-                     AND г2.id_города = т.id_города_назначения
-                     AND з.время_суток = т.время_суток
-        LEFT JOIN Правила_скидок п ON з.id_правила_скидки = п.id_правила
-        WHERE 1=1
-    )";
+    Q_UNUSED(dateFrom);
+        Q_UNUSED(dateTo);
+        Q_UNUSED(abonentId);
 
-    QVariantList params;
-
-    if (dateFrom.isValid()) {
-        sql += " AND з.дата >= ?";
-        params << dateFrom;
-    }
-
-    if (dateTo.isValid()) {
-        sql += " AND з.дата <= ?";
-        params << dateTo;
-    }
-
-    if (abonentId > 0) {
-        sql += " AND (а1.id_абонента = ? OR а2.id_абонента = ?)";
-        params << abonentId << abonentId;
-    }
-
-    sql += " ORDER BY з.дата DESC, з.id_звонка DESC";
-
-    return executeQueryAndMap<CallDetail>(sql, params);
+        QString sql = "SELECT * FROM calls";
+        QVariantList params;
+        return executeQueryAndMap<CallDetail>(sql, params);
 }
 
 QList<Call*> CallController::getAllCalls()
 {
-    QString sql = "SELECT * FROM Звонки ORDER BY дата DESC, id_звонка DESC";
+    QString sql = "SELECT * FROM calls ORDER BY call_date DESC, call_id DESC";
     return executeQueryAndMap<Call>(sql);
 }
 
@@ -107,13 +70,16 @@ double CallController::calculateCallCost(qint64 callerId, qint64 receiverId,
 {
     DatabaseManager &db = DatabaseManager::getInstance();
 
+    // Преобразуем время суток
+    QString tod = (timeOfDay == "день") ? "DAY" : "NIGHT";
+
     QString citySql = R"(
-        SELECT г1.id_города AS from_city, г2.id_города AS to_city
-        FROM Абоненты а1
-        JOIN Города г1 ON а1.id_города = г1.id_города
-        CROSS JOIN Абоненты а2
-        JOIN Города г2 ON а2.id_города = г2.id_города
-        WHERE а1.id_абонента = ? AND а2.id_абонента = ?
+        SELECT ct1.city_id AS origin_city, ct2.city_id AS destination_city
+        FROM subscribers s1
+        JOIN cities ct1 ON s1.city_id = ct1.city_id
+        CROSS JOIN subscribers s2
+        JOIN cities ct2 ON s2.city_id = ct2.city_id
+        WHERE s1.subscriber_id = $1 AND s2.subscriber_id = $2
     )";
 
     QSqlQuery cityQuery = db.executeQuery(citySql, {callerId, receiverId});
@@ -123,31 +89,31 @@ double CallController::calculateCallCost(qint64 callerId, qint64 receiverId,
         return -1;
     }
 
-    qint64 fromCity = cityQuery.value("from_city").toLongLong();
-    qint64 toCity = cityQuery.value("to_city").toLongLong();
+    qint64 originCity = cityQuery.value("origin_city").toLongLong();
+    qint64 destinationCity = cityQuery.value("destination_city").toLongLong();
 
-    QString tariffSql = "SELECT стоимость_минуты FROM Тарифы "
-                        "WHERE id_города_отправления = ? AND id_города_назначения = ? "
-                        "AND время_суток = ?";
+    QString tariffSql = "SELECT price_per_minute FROM tariffs "
+                        "WHERE origin_city_id = $1 AND destination_city_id = $2 "
+                        "AND time_of_day = $3";
 
-    QSqlQuery tariffQuery = db.executeQuery(tariffSql, {fromCity, toCity, timeOfDay});
+    QSqlQuery tariffQuery = db.executeQuery(tariffSql, {originCity, destinationCity, tod});
 
     if (!tariffQuery.next()) {
         emit errorOccurred("Тариф не найден для данного направления и времени");
         return -1;
     }
 
-    double costPerMinute = tariffQuery.value("стоимость_минуты").toDouble();
+    double costPerMinute = tariffQuery.value("price_per_minute").toDouble();
     double baseCost = duration * costPerMinute;
 
-    QString discountSql = "SELECT размер_скидки FROM Правила_скидок "
-                          "WHERE id_города_назначения = ? AND ? BETWEEN длительность_от AND длительность_до";
+    QString discountSql = "SELECT discount_percent FROM discount_rules "
+                          "WHERE destination_city_id = $1 AND $2 BETWEEN duration_from AND duration_to";
 
-    QSqlQuery discountQuery = db.executeQuery(discountSql, {toCity, duration});
+    QSqlQuery discountQuery = db.executeQuery(discountSql, {destinationCity, duration});
 
     discount = 0;
     if (discountQuery.next()) {
-        discount = discountQuery.value("размер_скидки").toDouble();
+        discount = discountQuery.value("discount_percent").toDouble();
     }
 
     totalCost = baseCost * (100 - discount) / 100;

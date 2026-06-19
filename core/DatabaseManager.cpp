@@ -29,6 +29,7 @@ void DatabaseManager::setupConnection()
     m_db.setDatabaseName(config.getDbName());
     m_db.setUserName(config.getDbUser());
     m_db.setPassword(config.getDbPassword());
+    m_db.setConnectOptions("client_encoding=UTF8");
 }
 
 bool DatabaseManager::connect()
@@ -44,7 +45,8 @@ bool DatabaseManager::connect()
     }
 
     m_connected = true;
-    Logger::getInstance().info("Connected to database");
+    Config &config = Config::getInstance();
+    Logger::getInstance().info("Connected to database: " + config.getDbName());
     return true;
 }
 
@@ -63,9 +65,12 @@ QSqlQuery DatabaseManager::executeQuery(const QString &sql, const QVariantList &
         return QSqlQuery();
     }
 
-    // Если параметров нет, просто выполняем запрос
+    Logger::getInstance().info("Executing query with " + QString::number(params.size()) + " params");
+    Logger::getInstance().info("SQL: " + sql);
+
+    QSqlQuery query(m_db);
+
     if (params.isEmpty()) {
-        QSqlQuery query(m_db);
         if (!query.exec(sql)) {
             m_lastError = query.lastError().text();
             Logger::getInstance().error("Query failed: " + m_lastError + "\nSQL: " + sql);
@@ -74,23 +79,16 @@ QSqlQuery DatabaseManager::executeQuery(const QString &sql, const QVariantList &
         return query;
     }
 
-    // Заменяем все вхождения "?" на $1, $2, ...
-    QString preparedSql = sql;
-    int paramIndex = 1;
-    int pos = preparedSql.indexOf('?');
-    while (pos != -1) {
-        // replace(pos, len, replacement) - заменяет len символов начиная с pos
-        preparedSql.replace(pos, 1, QString("$%1").arg(paramIndex));
-        paramIndex++;
-        pos = preparedSql.indexOf('?', pos + 1);
+    if (!query.prepare(sql)) {
+        m_lastError = query.lastError().text();
+        Logger::getInstance().error("Prepare failed: " + m_lastError + "\nSQL: " + sql);
+        return QSqlQuery();
     }
 
-    QSqlQuery query(m_db);
-    query.prepare(preparedSql);
-
-    // bindValue нумерация с 1
-    for (int i = 0; i < params.size(); ++i) {
-        query.bindValue(i + 1, params[i]);
+    // Используем addBindValue вместо bindValue с индексом
+    for (const QVariant &param : params) {
+        query.addBindValue(param);
+        Logger::getInstance().info("Added bind value: " + param.toString());
     }
 
     if (!query.exec()) {

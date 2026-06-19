@@ -108,9 +108,13 @@ void CallView::setupTable()
 
 void CallView::loadAbonents()
 {
-    // Для MVP просто оставляем "Все абоненты"
+    // Для MVP загружаем предустановленные абоненты из БД
+    // В реальном приложении здесь был бы AbonentController
     m_abonentComboBox->clear();
     m_abonentComboBox->addItem("Все абоненты", 0);
+
+    // Здесь нужно загрузить абонентов из БД
+    // Для упрощения оставляем только "Все абоненты"
 }
 
 void CallView::loadData()
@@ -139,7 +143,7 @@ void CallView::loadData()
 
         row << new QStandardItem(detail->getDate().toString("dd.MM.yyyy"));
         row << new QStandardItem(QString::number(detail->getDuration()));
-        row << new QStandardItem(detail->getTimeOfDay());
+        row << new QStandardItem(detail->getTimeOfDay());  // будет DAY/NIGHT
         row << new QStandardItem(detail->getSenderName());
         row << new QStandardItem(detail->getReceiverName());
         row << new QStandardItem(detail->getFromCity());
@@ -184,7 +188,8 @@ void CallView::onAdd()
                                         "Длительность (мин):", 5, 1, 10000, 1, &ok);
     if (!ok) return;
 
-    QStringList times = {"день", "ночь"};
+    // Используем DAY/NIGHT
+    QStringList times = {"DAY", "NIGHT"};
     QString timeOfDay = QInputDialog::getItem(this, "Добавление звонка",
                                               "Время суток:", times, 0, false, &ok);
     if (!ok) return;
@@ -251,7 +256,8 @@ void CallView::onCalculate()
                                         "Длительность (мин):", 5, 1, 10000, 1, &ok);
     if (!ok) return;
 
-    QStringList times = {"день", "ночь"};
+    // Используем DAY/NIGHT
+    QStringList times = {"DAY", "NIGHT"};
     QString timeOfDay = QInputDialog::getItem(this, "Расчёт стоимости",
                                               "Время суток:", times, 0, false, &ok);
     if (!ok) return;

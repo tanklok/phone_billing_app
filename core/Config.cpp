@@ -22,7 +22,7 @@ bool Config::loadFromFile(const QString &filePath)
     m_dbPort = settings.value("Database/Port", 5432).toInt();
     m_dbName = settings.value("Database/Name", "phone_billing").toString();
     m_dbUser = settings.value("Database/User", "postgres").toString();
-    m_dbPassword = settings.value("Database/Password", "postgres").toString();
+    m_dbPassword = settings.value("Database/Password", "tankt3486").toString();
 
     return true;
 }
