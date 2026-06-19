@@ -1,0 +1,24 @@
+# ninja log v7
+17	1863	8036116596043933	PhoneBillingApp_autogen/timestamp	5619bc5aabec24c6
+17	1863	8036116596043933	PhoneBillingApp_autogen/mocs_compilation.cpp	5619bc5aabec24c6
+17	1863	8036116596043933	C:/Users/User/phone_billing_app/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Release/PhoneBillingApp_autogen/timestamp	5619bc5aabec24c6
+17	1863	8036116596043933	C:/Users/User/phone_billing_app/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Release/PhoneBillingApp_autogen/mocs_compilation.cpp	5619bc5aabec24c6
+1973	5533	8036116597984106	CMakeFiles/PhoneBillingApp.dir/controllers/rolecontroller.cpp.obj	cdbf6d2542d504fb
+1938	5616	8036116597647152	CMakeFiles/PhoneBillingApp.dir/models/role.cpp.obj	7b2b96155db182f7
+1946	5710	8036116597707794	CMakeFiles/PhoneBillingApp.dir/controllers/basecontroller.cpp.obj	622b5cc919a0c72f
+1916	5712	8036116597411169	CMakeFiles/PhoneBillingApp.dir/models/user.cpp.obj	1853091e71aab6d6
+1953	5724	8036116597785606	CMakeFiles/PhoneBillingApp.dir/controllers/authcontroller.cpp.obj	ea2ff606724c1d0
+1923	5796	8036116597489004	CMakeFiles/PhoneBillingApp.dir/models/call.cpp.obj	cf0b6ea398243c76
+1984	6123	8036116598102202	CMakeFiles/PhoneBillingApp.dir/views/loginview.cpp.obj	44d60b28807d14ac
+1892	6222	8036116597189382	CMakeFiles/PhoneBillingApp.dir/core/Config.cpp.obj	df11eca9b2d5e5be
+1994	6321	8036116598202734	CMakeFiles/PhoneBillingApp.dir/views/registerview.cpp.obj	a677ee3654b6cedf
+1908	6331	8036116597332402	CMakeFiles/PhoneBillingApp.dir/core/DatabaseManager.cpp.obj	1216421799dab7b9
+1885	6419	8036116597107056	CMakeFiles/PhoneBillingApp.dir/main.cpp.obj	1d57eb7e253d4407
+1930	6526	8036116597569351	CMakeFiles/PhoneBillingApp.dir/models/calldetail.cpp.obj	b7306e21b399e326
+2042	6548	8036116598680474	CMakeFiles/PhoneBillingApp.dir/views/adduserdialog.cpp.obj	6df0b3850b2ac1f9
+1901	6682	8036116597262233	CMakeFiles/PhoneBillingApp.dir/core/Logger.cpp.obj	ada7cf4b38a028c9
+1966	7009	8036116597923806	CMakeFiles/PhoneBillingApp.dir/controllers/callcontroller.cpp.obj	61e9784aaefc483a
+2006	7213	8036116598320893	CMakeFiles/PhoneBillingApp.dir/views/mainwindow.cpp.obj	25d6443992f3e34c
+1878	7435	8036116596975491	CMakeFiles/PhoneBillingApp.dir/PhoneBillingApp_autogen/mocs_compilation.cpp.obj	e621952e80bc45ca
+2028	8231	8036116598522128	CMakeFiles/PhoneBillingApp.dir/views/callview.cpp.obj	7553ce9258eed4f2
+8231	8587	8036116660575960	PhoneBillingApp.exe	dbc069cc30b7d0f1

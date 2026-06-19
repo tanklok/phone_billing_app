@@ -1,0 +1,18 @@
+[2026-06-20 01:51:17] [INFO] Logger initialized
+[2026-06-20 01:51:17] [INFO] Connected to database: phone_billing
+[2026-06-20 01:51:17] [INFO] Application started
+[2026-06-20 01:51:17] [INFO] Executing query with 0 params
+[2026-06-20 01:51:17] [INFO] SQL: SELECT * FROM calls
+[2026-06-20 01:51:17] [INFO] Loaded 0 calls
+[2026-06-20 01:51:30] [INFO] Executing query with 1 params
+[2026-06-20 01:51:30] [INFO] SQL: SELECT * FROM users WHERE login = $1
+[2026-06-20 01:51:30] [INFO] Added bind value: admin
+[2026-06-20 01:51:32] [INFO] Executing query with 1 params
+[2026-06-20 01:51:32] [INFO] SQL: 
+        SELECT COUNT(*) FROM roles r
+        JOIN user_roles ur ON r.role_id = ur.role_id
+        WHERE ur.user_id = $1 AND r.role_name = 'admin'
+    
+[2026-06-20 01:51:32] [INFO] Added bind value: 1
+[2026-06-20 01:51:34] [INFO] Disconnected from database
+[2026-06-20 01:51:34] [INFO] Application finished
