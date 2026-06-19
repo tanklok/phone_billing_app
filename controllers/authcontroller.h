@@ -24,6 +24,10 @@ public:
     QSharedPointer<User> getCurrentUser() const { return m_currentUser; }
     bool isAuthenticated() const { return m_isAuthenticated; }
 
+    bool createUserByAdmin(const QString &login, const QString &password,
+                       const QString &fullName, const QString &roleName,
+                       QSharedPointer<User> &user);
+
 signals:
     void loginSuccess(const QSharedPointer<User> &user);
     void loginFailed(const QString &reason);

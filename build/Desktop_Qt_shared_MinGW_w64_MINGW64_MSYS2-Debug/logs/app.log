@@ -1,3 +1,86 @@
 [2026-06-19 16:25:59] [INFO] Logger initialized
 [2026-06-19 16:25:59] [INFO] Connected to database: phone_billing
 [2026-06-19 16:25:59] [INFO] Application started
+[2026-06-19 16:26:00] [INFO] Executing query with 0 params
+[2026-06-19 16:26:00] [INFO] SQL: SELECT * FROM calls
+[2026-06-19 16:26:00] [INFO] Loaded 0 calls
+[2026-06-19 16:26:58] [INFO] Executing query with 1 params
+[2026-06-19 16:26:58] [INFO] SQL: SELECT COUNT(*) FROM users WHERE login = $1
+[2026-06-19 16:26:58] [INFO] Added bind value: tanklokhm
+[2026-06-19 16:26:58] [INFO] Executing query with 3 params
+[2026-06-19 16:26:58] [INFO] SQL: INSERT INTO users (login, password_hash, full_name) VALUES ($1, $2, $3)
+[2026-06-19 16:26:58] [INFO] Added bind value: tanklokhm
+[2026-06-19 16:26:58] [INFO] Added bind value: f7c0c54810438e999c8e13c2023397350aa448fa5c969c33db44c74420210b2f
+[2026-06-19 16:26:58] [INFO] Added bind value: Lokhanova Tanya
+[2026-06-19 16:26:58] [INFO] Executing query with 1 params
+[2026-06-19 16:26:58] [INFO] SQL: SELECT role_id FROM roles WHERE role_name = $1
+[2026-06-19 16:26:58] [INFO] Added bind value: operator
+[2026-06-19 16:26:58] [INFO] Executing query with 2 params
+[2026-06-19 16:26:58] [INFO] SQL: INSERT INTO user_roles (user_id, role_id) VALUES ($1, $2)
+[2026-06-19 16:26:58] [INFO] Added bind value: 2
+[2026-06-19 16:26:58] [INFO] Added bind value: 2
+[2026-06-19 16:26:58] [INFO] Executing query with 1 params
+[2026-06-19 16:26:58] [INFO] SQL: SELECT * FROM users WHERE user_id = $1
+[2026-06-19 16:26:58] [INFO] Added bind value: 2
+[2026-06-19 16:27:19] [INFO] Executing query with 1 params
+[2026-06-19 16:27:19] [INFO] SQL: SELECT * FROM users WHERE login = $1
+[2026-06-19 16:27:19] [INFO] Added bind value: tanklokhm
+[2026-06-19 16:27:51] [INFO] Executing query with 5 params
+[2026-06-19 16:27:51] [INFO] SQL: INSERT INTO calls (call_date, duration_minutes, time_of_day, sender_subscriber_id, receiver_subscriber_id) VALUES ($1, $2, $3, $4, $5)
+[2026-06-19 16:27:51] [INFO] Added bind value: 2026-06-19
+[2026-06-19 16:27:51] [INFO] Added bind value: 14
+[2026-06-19 16:27:51] [INFO] Added bind value: NIGHT
+[2026-06-19 16:27:51] [INFO] Added bind value: 6
+[2026-06-19 16:27:51] [INFO] Added bind value: 2
+[2026-06-19 16:27:51] [ERROR] Query failed: ОШИБКА:  INSERT или UPDATE в таблице "calls" нарушает ограничение внешнего ключа "fk_call_sender"
+DETAIL:  Ключ (sender_subscriber_id)=(6) отсутствует в таблице "subscribers".
+(23503) QPSQL: Unable to send query
+SQL: INSERT INTO calls (call_date, duration_minutes, time_of_day, sender_subscriber_id, receiver_subscriber_id) VALUES ($1, $2, $3, $4, $5)
+[2026-06-19 18:20:54] [INFO] Disconnected from database
+[2026-06-19 18:20:54] [INFO] Application finished
+[2026-06-19 19:00:56] [INFO] Logger initialized
+[2026-06-19 19:00:56] [INFO] Connected to database: phone_billing
+[2026-06-19 19:00:56] [INFO] Application started
+[2026-06-19 19:00:56] [INFO] Executing query with 0 params
+[2026-06-19 19:00:56] [INFO] SQL: SELECT * FROM calls
+[2026-06-19 19:00:56] [INFO] Loaded 0 calls
+[2026-06-19 19:01:12] [INFO] Executing query with 1 params
+[2026-06-19 19:01:12] [INFO] SQL: SELECT * FROM users WHERE login = $1
+[2026-06-19 19:01:12] [INFO] Added bind value: admin
+[2026-06-19 19:01:13] [INFO] Executing query with 1 params
+[2026-06-19 19:01:13] [INFO] SQL: 
+        SELECT COUNT(*) FROM roles r
+        JOIN user_roles ur ON r.role_id = ur.role_id
+        WHERE ur.user_id = $1 AND r.role_name = 'admin'
+    
+[2026-06-19 19:01:13] [INFO] Added bind value: 1
+[2026-06-19 19:01:41] [INFO] Executing query with 0 params
+[2026-06-19 19:01:41] [INFO] SQL: SELECT * FROM roles ORDER BY role_name
+[2026-06-19 19:05:23] [INFO] Disconnected from database
+[2026-06-19 19:05:23] [INFO] Application finished
+[2026-06-19 19:06:55] [INFO] Logger initialized
+[2026-06-19 19:06:55] [INFO] Connected to database: phone_billing
+[2026-06-19 19:06:55] [INFO] Application started
+[2026-06-19 19:06:55] [INFO] Executing query with 0 params
+[2026-06-19 19:06:55] [INFO] SQL: SELECT * FROM calls
+[2026-06-19 19:06:55] [INFO] Loaded 0 calls
+[2026-06-19 19:07:15] [INFO] Executing query with 1 params
+[2026-06-19 19:07:15] [INFO] SQL: SELECT * FROM users WHERE login = $1
+[2026-06-19 19:07:15] [INFO] Added bind value: admin
+[2026-06-19 19:07:17] [INFO] Executing query with 1 params
+[2026-06-19 19:07:17] [INFO] SQL: 
+        SELECT COUNT(*) FROM roles r
+        JOIN user_roles ur ON r.role_id = ur.role_id
+        WHERE ur.user_id = $1 AND r.role_name = 'admin'
+    
+[2026-06-19 19:07:17] [INFO] Added bind value: 1
+[2026-06-19 19:07:20] [INFO] Executing query with 0 params
+[2026-06-19 19:07:20] [INFO] SQL: SELECT * FROM roles ORDER BY role_name
+[2026-06-19 19:07:29] [INFO] Executing query with 0 params
+[2026-06-19 19:07:29] [INFO] SQL: SELECT * FROM calls
+[2026-06-19 19:07:29] [INFO] Loaded 0 calls
+[2026-06-19 19:07:30] [INFO] Executing query with 0 params
+[2026-06-19 19:07:30] [INFO] SQL: SELECT * FROM calls
+[2026-06-19 19:07:30] [INFO] Loaded 0 calls
+[2026-06-19 19:07:42] [INFO] Disconnected from database
+[2026-06-19 19:07:42] [INFO] Application finished

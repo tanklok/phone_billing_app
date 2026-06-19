@@ -386,6 +386,7 @@ PhoneBillingApp_autogen/timestamp: \
 	C:/User/User/msys64/mingw64/include/qt6/QtSql/qtsqlglobal.h \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/QComboBox \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/QDateEdit \
+	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/QDialog \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/QLabel \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/QLineEdit \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/QMainWindow \
@@ -401,6 +402,7 @@ PhoneBillingApp_autogen/timestamp: \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/qabstractspinbox.h \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/qcombobox.h \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/qdatetimeedit.h \
+	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/qdialog.h \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/qframe.h \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/qlabel.h \
 	C:/User/User/msys64/mingw64/include/qt6/QtWidgets/qlineedit.h \
@@ -649,107 +651,26 @@ PhoneBillingApp_autogen/timestamp: \
 	C:/User/User/msys64/mingw64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake \
 	C:/User/User/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
 	C:/User/User/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeCCompiler.cmake.in \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeCCompilerABI.c \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeCInformation.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeCXXCompiler.cmake.in \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeCXXCompilerABI.cpp \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeCompilerIdDetection.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeDetermineCCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerId.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeDetermineRCCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeDetermineSystem.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeFindBinUtils.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeFindDependencyMacro.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeNinjaFindMake.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeRCCompiler.cmake.in \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeRCInformation.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeSystem.cmake.in \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeTestCCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeTestCXXCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeTestCompilerCommon.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/CMakeTestRCCompiler.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CheckCSourceCompiles.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CheckCXXCompilerFlag.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CheckCXXSourceCompiles.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CheckIncludeFile.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/CheckLibraryExists.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/CrayClang-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Diab-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/GNU-C.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/GNU-CXX-CXXImportStd.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/GNU-CXX.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/GNU.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/LCC-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/OrangeC-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Renesas-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/TIClang-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/FindPackageHandleStandardArgs.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/FindPackageMessage.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/FindThreads.cmake \
@@ -758,13 +679,9 @@ PhoneBillingApp_autogen/timestamp: \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/CMakeInspectCLinker.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/CMakeInspectCXXLinker.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/CheckCompilerFlag.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/CheckFlagCommonConfig.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/CheckSourceCompiles.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Internal/FeatureTesting.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Linker/GNU-C.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Linker/GNU-CXX.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Linker/GNU.cmake \
@@ -772,7 +689,6 @@ PhoneBillingApp_autogen/timestamp: \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU-C.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU-CXX.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU.cmake \
-	C:/User/User/msys64/mingw64/share/cmake/Modules/Platform/Windows-Determine-CXX.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-C-ABI.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-C.cmake \
 	C:/User/User/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake \
@@ -795,6 +711,8 @@ PhoneBillingApp_autogen/timestamp: \
 	C:/Users/User/phone_billing_app/controllers/basecontroller.h \
 	C:/Users/User/phone_billing_app/controllers/callcontroller.cpp \
 	C:/Users/User/phone_billing_app/controllers/callcontroller.h \
+	C:/Users/User/phone_billing_app/controllers/rolecontroller.cpp \
+	C:/Users/User/phone_billing_app/controllers/rolecontroller.h \
 	C:/Users/User/phone_billing_app/core/Config.cpp \
 	C:/Users/User/phone_billing_app/core/Config.h \
 	C:/Users/User/phone_billing_app/core/DatabaseManager.cpp \
@@ -808,8 +726,12 @@ PhoneBillingApp_autogen/timestamp: \
 	C:/Users/User/phone_billing_app/models/calldetail.cpp \
 	C:/Users/User/phone_billing_app/models/calldetail.h \
 	C:/Users/User/phone_billing_app/models/model.h \
+	C:/Users/User/phone_billing_app/models/role.cpp \
+	C:/Users/User/phone_billing_app/models/role.h \
 	C:/Users/User/phone_billing_app/models/user.cpp \
 	C:/Users/User/phone_billing_app/models/user.h \
+	C:/Users/User/phone_billing_app/views/adduserdialog.cpp \
+	C:/Users/User/phone_billing_app/views/adduserdialog.h \
 	C:/Users/User/phone_billing_app/views/callview.cpp \
 	C:/Users/User/phone_billing_app/views/callview.h \
 	C:/Users/User/phone_billing_app/views/loginview.cpp \

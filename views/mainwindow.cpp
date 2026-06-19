@@ -2,8 +2,10 @@
 #include "loginview.h"
 #include "registerview.h"
 #include "callview.h"
+#include "adduserdialog.h"
 #include "../controllers/authcontroller.h"
 #include "../controllers/callcontroller.h"
+
 
 #include <QMessageBox>
 #include <QStatusBar>
@@ -42,7 +44,7 @@ void MainWindow::createViews()
 {
     m_loginView = new LoginView(this);
     connect(m_loginView, &LoginView::loginRequested, this, &MainWindow::onLoginAttempt);
-    connect(m_loginView, &LoginView::registerRequested, this, &MainWindow::showRegister);
+    // connect(m_loginView, &LoginView::registerRequested, this, &MainWindow::showRegister);
 
     m_registerView = new RegisterView(this);
     connect(m_registerView, &RegisterView::registerRequested, this, &MainWindow::onRegisterAttempt);
@@ -81,6 +83,12 @@ void MainWindow::setupMenu()
         );
     } else {
         statusBar()->showMessage("Не авторизован");
+    }
+
+    if (m_currentUser && m_authController.isAdmin(m_currentUser->getId())) {
+    QMenu *adminMenu = menuBar()->addMenu("&Администрирование");
+    QAction *addUserAction = adminMenu->addAction("&Добавить пользователя");
+    connect(addUserAction, &QAction::triggered, this, &MainWindow::onAddUser);
     }
 }
 
@@ -124,7 +132,6 @@ void MainWindow::onLoginAttempt(const QString &login, const QString &password)
 {
     QSharedPointer<User> user;
     if (m_authController.login(login, password, user)) {
-        // сигнал сделает остальное
     }
 }
 
@@ -133,7 +140,6 @@ void MainWindow::onRegisterAttempt(const QString &login, const QString &password
 {
     QSharedPointer<User> user;
     if (m_authController.registerUser(login, password, fullName, roleName, user)) {
-        // сигнал сделает остальное
     }
 }
 
@@ -157,4 +163,10 @@ void MainWindow::onRegistrationSuccess(const QSharedPointer<User> &user)
 void MainWindow::onRegistrationFailed(const QString &reason)
 {
     QMessageBox::warning(this, "Ошибка регистрации", reason);
+}
+
+void MainWindow::onAddUser()
+{
+    AddUserDialog dialog(this);
+    dialog.exec();
 }

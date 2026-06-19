@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QFont>
 
 LoginView::LoginView(QWidget *parent) : QWidget(parent)
 {
@@ -12,60 +13,94 @@ LoginView::LoginView(QWidget *parent) : QWidget(parent)
 void LoginView::setupUI()
 {
     setWindowTitle("Вход - Учёт междугородних переговоров");
-    setFixedSize(400, 300);
+    setMinimumSize(450, 400);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->addStretch();
 
+    // Заголовок
     QLabel *titleLabel = new QLabel("Авторизация", this);
     titleLabel->setAlignment(Qt::AlignCenter);
-    titleLabel->setStyleSheet("font-size: 20px; font-weight: bold; margin: 20px;");
+    QFont titleFont = titleLabel->font();
+    titleFont.setPointSize(24);
+    titleFont.setBold(true);
+    titleLabel->setFont(titleFont);
     mainLayout->addWidget(titleLabel);
+    mainLayout->addSpacing(30);
 
-    // Поле логина
     QHBoxLayout *loginLayout = new QHBoxLayout();
+    loginLayout->addStretch();
+
     QLabel *loginLabel = new QLabel("Логин:", this);
     loginLabel->setFixedWidth(80);
+    QFont labelFont = loginLabel->font();
+    labelFont.setPointSize(12);
+    loginLabel->setFont(labelFont);
+
     m_loginEdit = new QLineEdit(this);
     m_loginEdit->setPlaceholderText("Введите логин");
+    m_loginEdit->setMinimumHeight(35);
+    QFont editFont = m_loginEdit->font();
+    editFont.setPointSize(12);
+    m_loginEdit->setFont(editFont);
+    m_loginEdit->setMinimumWidth(200);
+
     loginLayout->addWidget(loginLabel);
     loginLayout->addWidget(m_loginEdit);
+    loginLayout->addStretch();
     mainLayout->addLayout(loginLayout);
+    mainLayout->addSpacing(15);
 
-    // Поле пароля
     QHBoxLayout *passwordLayout = new QHBoxLayout();
+    passwordLayout->addStretch();
+
     QLabel *passwordLabel = new QLabel("Пароль:", this);
     passwordLabel->setFixedWidth(80);
+    passwordLabel->setFont(labelFont);
+
     m_passwordEdit = new QLineEdit(this);
     m_passwordEdit->setPlaceholderText("Введите пароль");
     m_passwordEdit->setEchoMode(QLineEdit::Password);
+    m_passwordEdit->setMinimumHeight(35);
+    m_passwordEdit->setFont(editFont);
+    m_passwordEdit->setMinimumWidth(200);
+
     passwordLayout->addWidget(passwordLabel);
     passwordLayout->addWidget(m_passwordEdit);
+    passwordLayout->addStretch();
     mainLayout->addLayout(passwordLayout);
+    mainLayout->addSpacing(30);
 
-    mainLayout->addSpacing(20);
-
-    // Кнопки
     QHBoxLayout *buttonLayout = new QHBoxLayout();
+    buttonLayout->addStretch();
+
     m_loginBtn = new QPushButton("Войти", this);
     m_loginBtn->setDefault(true);
-    m_registerBtn = new QPushButton("Регистрация", this);
+    m_loginBtn->setMinimumHeight(40);
+    m_loginBtn->setMinimumWidth(100);
+    QFont btnFont = m_loginBtn->font();
+    btnFont.setPointSize(12);
+    m_loginBtn->setFont(btnFont);
+    m_loginBtn->setStyleSheet("background-color: #4CAF50; color: white; border-radius: 5px;");
 
     connect(m_loginBtn, &QPushButton::clicked, this, &LoginView::onLoginClicked);
-    connect(m_registerBtn, &QPushButton::clicked, this, &LoginView::onRegisterClicked);
+    // connect(m_registerBtn, &QPushButton::clicked, this, &LoginView::onRegisterClicked);
 
-    buttonLayout->addStretch();
     buttonLayout->addWidget(m_loginBtn);
-    buttonLayout->addWidget(m_registerBtn);
+    buttonLayout->addSpacing(20);
+    // buttonLayout->addWidget(m_registerBtn);
     buttonLayout->addStretch();
     mainLayout->addLayout(buttonLayout);
+    mainLayout->addSpacing(20);
 
-    // Статус
     m_statusLabel = new QLabel(this);
     m_statusLabel->setAlignment(Qt::AlignCenter);
-    m_statusLabel->setStyleSheet("color: red;");
+    m_statusLabel->setStyleSheet("color: red; font-size: 12px;");
     mainLayout->addWidget(m_statusLabel);
 
     mainLayout->addStretch();
+
+    setLayout(mainLayout);
 }
 
 void LoginView::onLoginClicked()
@@ -81,7 +116,7 @@ void LoginView::onLoginClicked()
     emit loginRequested(login, password);
 }
 
-void LoginView::onRegisterClicked()
-{
-    emit registerRequested();
-}
+// void LoginView::onRegisterClicked()
+// {
+//     emit registerRequested();
+// }

@@ -32,6 +32,7 @@ private slots:
     void onLoginFailed(const QString &reason);
     void onRegistrationSuccess(const QSharedPointer<User> &user);
     void onRegistrationFailed(const QString &reason);
+    void onAddUser();
 
 private:
     QStackedWidget *m_stackedWidget;

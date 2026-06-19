@@ -44,9 +44,7 @@ template <> constexpr inline auto LoginView::qt_create_metaobjectdata<qt_meta_ta
         "",
         "login",
         "password",
-        "registerRequested",
-        "onLoginClicked",
-        "onRegisterClicked"
+        "onLoginClicked"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -54,12 +52,8 @@ template <> constexpr inline auto LoginView::qt_create_metaobjectdata<qt_meta_ta
         QtMocHelpers::SignalData<void(const QString &, const QString &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 3 }, { QMetaType::QString, 4 },
         }}),
-        // Signal 'registerRequested'
-        QtMocHelpers::SignalData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onLoginClicked'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onRegisterClicked'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -84,16 +78,12 @@ void LoginView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->loginRequested((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
-        case 1: _t->registerRequested(); break;
-        case 2: _t->onLoginClicked(); break;
-        case 3: _t->onRegisterClicked(); break;
+        case 1: _t->onLoginClicked(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (LoginView::*)(const QString & , const QString & )>(_a, &LoginView::loginRequested, 0))
-            return;
-        if (QtMocHelpers::indexOfMethod<void (LoginView::*)()>(_a, &LoginView::registerRequested, 1))
             return;
     }
 }
@@ -117,14 +107,14 @@ int LoginView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 2;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 2;
     }
     return _id;
 }
@@ -133,11 +123,5 @@ int LoginView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void LoginView::loginRequested(const QString & _t1, const QString & _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2);
-}
-
-// SIGNAL 1
-void LoginView::registerRequested()
-{
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP

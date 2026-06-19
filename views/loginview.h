@@ -1,4 +1,3 @@
-// views/loginview.h
 #ifndef LOGINVIEW_H
 #define LOGINVIEW_H
 
@@ -15,17 +14,17 @@ public:
 
 signals:
     void loginRequested(const QString &login, const QString &password);
-    void registerRequested();
+    // void registerRequested();
 
 private slots:
     void onLoginClicked();
-    void onRegisterClicked();
+    // void onRegisterClicked();
 
 private:
     QLineEdit *m_loginEdit;
     QLineEdit *m_passwordEdit;
     QPushButton *m_loginBtn;
-    QPushButton *m_registerBtn;
+    // QPushButton *m_registerBtn;
     QLabel *m_statusLabel;
 
     void setupUI();

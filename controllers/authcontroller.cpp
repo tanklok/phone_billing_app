@@ -130,3 +130,73 @@ bool AuthController::isAdmin(qint64 userId) const
     }
     return false;
 }
+
+bool AuthController::createUserByAdmin(const QString &login, const QString &password,
+                                        const QString &fullName, const QString &roleName,
+                                        QSharedPointer<User> &user)
+{
+    // Проверка сложности пароля
+    if (!isPasswordStrong(password)) {
+        emit registrationFailed("Пароль должен содержать минимум 8 символов, "
+                                "одну заглавную букву, одну цифру и один спецсимвол");
+        return false;
+    }
+
+    DatabaseManager &db = DatabaseManager::getInstance();
+
+    // Проверка существования логина
+    QString checkSql = "SELECT COUNT(*) FROM users WHERE login = $1";
+    QSqlQuery checkQuery = db.executeQuery(checkSql, {login});
+    if (checkQuery.next() && checkQuery.value(0).toInt() > 0) {
+        emit registrationFailed("Пользователь с таким логином уже существует");
+        return false;
+    }
+
+    db.beginTransaction();
+
+    user = QSharedPointer<User>::create();
+    user->setLogin(login);
+    user->setPassword(password);
+    user->setFullName(fullName);
+
+    QString insertSql = "INSERT INTO users (login, password_hash, full_name) VALUES ($1, $2, $3)";
+    if (!db.executeNonQuery(insertSql, {user->getLogin(), user->getPasswordHash(), user->getFullName()})) {
+        emit registrationFailed("Ошибка при создании пользователя");
+        db.rollbackTransaction();
+        return false;
+    }
+
+    qint64 userId = db.lastInsertId();
+
+    // Получение ID роли
+    QString roleSql = "SELECT role_id FROM roles WHERE role_name = $1";
+    QSqlQuery roleQuery = db.executeQuery(roleSql, {roleName});
+    if (!roleQuery.next()) {
+        emit registrationFailed("Роль не найдена");
+        db.rollbackTransaction();
+        return false;
+    }
+    qint64 roleId = roleQuery.value("role_id").toLongLong();
+
+    // Назначение роли
+    QString assignSql = "INSERT INTO user_roles (user_id, role_id) VALUES ($1, $2)";
+    if (!db.executeNonQuery(assignSql, {userId, roleId})) {
+        emit registrationFailed("Ошибка при назначении роли");
+        db.rollbackTransaction();
+        return false;
+    }
+
+    db.commitTransaction();
+
+    // Загрузка созданного пользователя
+    QString loadSql = "SELECT * FROM users WHERE user_id = $1";
+    QSqlQuery loadQuery = db.executeQuery(loadSql, {userId});
+    if (loadQuery.next()) {
+        user->fromQuery(loadQuery);
+        emit registrationSuccess(user);
+        return true;
+    }
+
+    emit registrationFailed("Ошибка загрузки данных");
+    return false;
+}

@@ -28,6 +28,7 @@ set(MODEL_SOURCES
     models/user.cpp
     models/call.cpp
     models/calldetail.cpp
+    models/role.cpp
 )
 
 set(MODEL_HEADERS
@@ -35,6 +36,7 @@ set(MODEL_HEADERS
     models/user.h
     models/call.h
     models/calldetail.h
+    models/role.h
 )
 
 # Controllers (БЕЗ AbonentController)
@@ -42,12 +44,14 @@ set(CONTROLLER_SOURCES
     controllers/basecontroller.cpp
     controllers/authcontroller.cpp
     controllers/callcontroller.cpp
+    controllers/rolecontroller.cpp
 )
 
 set(CONTROLLER_HEADERS
     controllers/basecontroller.h
     controllers/authcontroller.h
     controllers/callcontroller.h
+    controllers/rolecontroller.h
 )
 
 # Views
@@ -56,6 +60,7 @@ set(VIEW_SOURCES
     views/registerview.cpp
     views/mainwindow.cpp
     views/callview.cpp
+    views/adduserdialog.cpp
 )
 
 set(VIEW_HEADERS
@@ -63,6 +68,7 @@ set(VIEW_HEADERS
     views/registerview.h
     views/mainwindow.h
     views/callview.h
+    views/adduserdialog.h
 )
 
 add_executable(PhoneBillingApp
